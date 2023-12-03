@@ -1,0 +1,12 @@
+# バックエンドのDockerfile
+FROM node:18-slim
+
+# 作業ディレクトリの設定
+WORKDIR /app
+
+# インストール
+RUN apt-get update \
+    && apt-get install -y
+
+# LoopBack CLIのインストール
+RUN npm install -g @loopback/cli
