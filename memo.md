@@ -14,7 +14,6 @@
 最初の段階としては家族だけで利用できるアプリでよい
 書籍情報をAPIで取得してほぞんできるようにする
 任意で画像も表示、保存できるようにする
-るスキル
 
 身に着けたいスキルとしては現状で使っているTypeScript+Vue3+Vuetifyを使った技術
 併せてCI/CDやインフラ周りの構築についてもできるようになりたい。
@@ -45,7 +44,7 @@ ubuntu / admin
 - UIフレームワーク: Vuetify3
 - バックエンドAPI: loopback4
 - パッケージマネージャ: yarn
-- データベース: SQLite
+- データベース: MySQL
 - コンテナ化: Docker
 - コンテナオーケストレーション: Kubernetes (k8s)
 - 開発環境: DevContainer, WSL 2 (Ubuntu)
@@ -125,6 +124,8 @@ lb4 app
 # hostから'backend/backend' ディレクトリの内容を 'backend/' ディレクトリに移動
 mv backend/backend/* backend/
 mv backend/backend/.[!.]* backend/
+
+mv frontend/bookman/* frontend/
 
 # 空の 'backend/backend' ディレクトリを削除
 rmdir backend/backend
@@ -222,3 +223,37 @@ https://vercel.com/signup にアクセスして、アカウントを作成する
 Vercel CLIをインストールする。
 Vercel CLIでログインする。
 以上が、開発環境の構築に必要な手順です。必要に応じて、各ステップを詳細に学習し、実装していくことをお勧めします。
+
+### vercel
+
+yarn global add vercel
+
+vercel login
+
+vercel --prod
+
+```
+C:\Users\naoki\Develop\bookman>vercel
+Vercel CLI 32.1.0
+? Set up and deploy “~\Develop\bookman”? [Y/n] y
+? Which scope do you want to deploy to? noda13
+? Link to existing project? [y/N] n
+? What’s your project’s name? bookman
+? In which directory is your code located? ./
+Local settings detected in vercel.json:
+No framework detected. Default Project Settings:
+- Build Command: `npm run vercel-build` or `npm run build`
+- Development Command: None
+- Install Command: `yarn install`, `pnpm install`, `npm install`, or `bun install`
+- Output Directory: `public` if it exists, or `.`
+? Want to modify these settings? [y/N] n
+🔗  Linked to noda13/bookman (created .vercel and added it to .gitignore)
+🔍  Inspect: https://vercel.com/noda13/bookman/E7xXCLmNXjQHj1vsJJhoeF4m3BJX [2s]
+✅  Production: https://bookman-five.vercel.app [9s]
+📝  Deployed to production. Run `vercel --prod` to overwrite later (https://vercel.link/2F).
+💡  To change the domain or build command, go to https://vercel.com/noda13/bookman/settings
+```
+
+### front
+
+docker compose exec frontend 
